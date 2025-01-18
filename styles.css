@@ -1,0 +1,851 @@
+:root {
+    --vsgreen: #32CD32;
+    --vsred: #ef0606;
+    --vsyellow: #f5da2d;
+    --vsorange: #ffab3d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Consolas', 'Courier New', monospace;
+    line-height: 1.6;
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(00, 00, 00, 0.95);
+    padding: 1rem 2rem;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+}
+
+#navbar.scrolled {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.95), #2b2b2b);
+}
+
+.nav-brand img {
+    height: 30px;
+}
+
+#navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+#navbar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+#navbar ul li a:hover {
+    color: var(--vsgreen);
+}
+
+/* Welcome Section */
+#welcome-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #000000, #1c1c1c, #2b2b2b);
+    position: relative;
+}
+
+.welcome-content {
+    text-align: center;
+}
+
+.welcome-hero {
+    display: flex;
+    gap: 60px;
+}
+
+.welcome-me img {
+    border-radius: 50%;
+    width: 300px;
+    filter: contrast(1.2) saturate(1.1);
+    filter: drop-shadow(0 0 10px rgba(0, 255, 157, 0.5));
+}
+
+.welcome-text {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.indent {
+    margin-left: 4rem;
+}
+
+.greenish {
+    margin-bottom: 1rem;
+    color: var(--vsgreen);
+}
+
+.yellowish {
+    color: var(--vsyellow);
+}
+
+.reddish {
+    color: var(--vsred);
+}
+
+.oranges {
+    color: var(--vsorange);
+}
+
+/* Mouse Scroll Animation */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+.mouse {
+    width: 26px;
+    height: 42px;
+    border: 2px solid #fff;
+    border-radius: 13px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.mouse::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: #fff;
+    border-radius: 2px;
+    animation: scroll 2s infinite;
+}
+
+/* About Section */
+#about {
+    padding: 6rem 2rem;
+    background: #1e1e1e;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.about-content {
+    margin-bottom: 4rem;
+}
+
+.about-text {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-text p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+    text-align: justify;
+}
+
+/* Skills Section */
+.text-center {
+    text-align: center;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.skill-content {
+    background: #252525;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.skills {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.skill-bars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill {
+    margin-bottom: 1.5rem;
+}
+
+.skill span {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #333;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress {
+    position: relative;
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--vsgreen), #00b8ff);
+    transform-origin: left;
+    animation: fillProgress 1.5s ease-out forwards;
+}
+
+.progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+    animation: shimmer 2s infinite;
+}
+
+/* Projects Section */
+#projects {
+    padding: 6rem 2rem;
+    background: #1a1a1a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #00ff9d, transparent);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-tile {
+    background: #252525;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.project-tile:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.project-image {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-tile:hover .project-image img {
+    transform: scale(1.1);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 255, 157, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 2rem;
+}
+
+.project-tile:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-overlay h3 {
+    color: #1a1a1a;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.project-overlay p {
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.project-tile:hover .project-overlay h3,
+.project-tile:hover .project-overlay p {
+    transform: translateY(0);
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.live-demo {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.project-info {
+    padding: 2rem;
+}
+
+.project-info h3 {
+    color: #00ff9d;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.project-info p {
+    color: #e0e0e0;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.tech-stack span {
+    background: #333;
+    color: #00ff9d;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.tech-stack span:hover {
+    background: #00ff9d;
+    color: #1a1a1a;
+}
+
+/* Certificates Section Styles */
+#certificates {
+    padding: 6rem 2rem;
+    background: #1e1e1e;
+    min-height: 100vh;
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.certificate {
+    background: #252525;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.certificate:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.certificate img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-bottom: 2px solid #00ff9d;
+    transition: transform 0.3s ease;
+}
+
+.certificate-info {
+    padding: 1.5rem;
+}
+
+.certificate-content {
+    margin-bottom: 1.5rem;
+}
+
+.certificate-content h3 {
+    color: #00ff9d;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.issuer,
+.date {
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.issuer i,
+.date i {
+    color: #00ff9d;
+}
+
+.skills-learned {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.skills-learned span {
+    background: #333;
+    color: #00ff9d;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.skills-learned span:hover {
+    background: #00ff9d;
+    color: #1a1a1a;
+}
+
+.certificate-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.animate {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.animate.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Different animation variations */
+.animate.fade-left {
+    transform: translateX(-100px);
+}
+
+.animate.fade-right {
+    transform: translateX(100px);
+}
+
+/* Delay classes for staggered animations */
+.delay-1 {
+    transition-delay: 0.2s;
+}
+
+.delay-2 {
+    transition-delay: 0.4s;
+}
+
+.delay-3 {
+    transition-delay: 0.6s;
+}
+
+/* Scroll Progress Indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(to right, #00ff9d, #00b8ff);
+    z-index: 1000;
+    transition: width 0.3s ease;
+}
+
+/* Enhanced Animation Styles */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Apply different animations to different elements */
+.skill-bars .animate {
+    animation: slideInLeft 0.8s ease forwards;
+}
+
+.project-tile.animate {
+    animation: scaleIn 0.8s ease forwards;
+}
+
+.certificate.animate {
+    animation: slideInRight 0.8s ease forwards;
+}
+
+/* Optional: Add smooth scrolling to the whole page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Optional: Add perspective to 3D animations */
+.section {
+    perspective: 1000px;
+}
+
+/* Optional: Add 3D rotation animation */
+@keyframes rotate3d {
+    from {
+        opacity: 0;
+        transform: rotateX(20deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotateX(0);
+    }
+}
+
+/* Optional: Add floating animation */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Apply floating animation to cards on hover */
+.card:hover {
+    animation: float 3s ease infinite;
+}
+
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Staggered Loading Animation */
+.certificate:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.certificate:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Hover Glow Effect */
+.certificate::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg,
+            transparent 0%,
+            rgba(0, 255, 157, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.certificate:hover::after {
+    opacity: 1;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    #certificates {
+        padding: 4rem 1rem;
+    }
+
+    .certificates-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .certificate-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+/* Dark Mode Enhancement */
+@media (prefers-color-scheme: dark) {
+    .certificate {
+        background: #2a2a2a;
+    }
+
+    .skills-learned span {
+        background: #333;
+    }
+}
+
+/* Loading Skeleton Animation */
+.certificate.loading {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
+
+/* Contact Section */
+#contact {
+    padding: 5rem 2rem;
+    background: #1a1a1a;
+    text-align: center;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 2rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--vsgreen);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-30px);
+    }
+
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translate(-50%, 10px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, 20px);
+        opacity: 0;
+    }
+}
+
+@keyframes fillProgress {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    #navbar {
+        padding: 1rem;
+    }
+
+    #navbar ul {
+        display: none;
+    }
+
+    .glitch {
+        font-size: 2.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
