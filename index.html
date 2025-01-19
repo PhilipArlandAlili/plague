@@ -14,6 +14,9 @@
         <div class="nav-brand">
             <img src="flip.png" alt="flip logo">
         </div>
+        <button id="menu-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
         <ul>
             <li><a href="#welcome-section">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -366,6 +369,17 @@
         };
 
         addScrollProgress();
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const menuToggle = document.getElementById("menu-toggle");
+            const navbarUl = document.querySelector("#navbar ul");
+
+            menuToggle.addEventListener("click", () => {
+                navbarUl.classList.toggle("show");
+            });
+        });
     </script>
 </body>
 

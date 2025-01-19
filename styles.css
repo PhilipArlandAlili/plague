@@ -31,7 +31,18 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: white;
     backdrop-filter: blur(10px);
+}
+
+#navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+#menu-toggle {
+    display: none;
 }
 
 #navbar.scrolled {
@@ -40,11 +51,6 @@ body {
 
 .nav-brand img {
     height: 30px;
-}
-
-#navbar ul {
-    display: flex;
-    list-style: none;
 }
 
 #navbar ul li a {
@@ -300,7 +306,6 @@ body {
 .project-tile:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0, 255, 157, 0.2);
-    /* Add glowing shadow on hover */
 }
 
 .project-tile::after {
@@ -517,17 +522,6 @@ body {
     color: #1a1a1a;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .animate {
     opacity: 0;
     transform: translateY(50px);
@@ -573,43 +567,6 @@ body {
     transition: width 0.3s ease;
 }
 
-/* Enhanced Animation Styles */
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-100px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes scaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
 /* Apply different animations to different elements */
 .skill-bars .animate {
     animation: slideInLeft 0.8s ease forwards;
@@ -619,22 +576,8 @@ body {
     animation: scaleIn 0.8s ease forwards;
 }
 
-/* Optional: Add perspective to 3D animations */
 .section {
     perspective: 1000px;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* Staggered Loading Animation */
@@ -645,8 +588,6 @@ body {
 .certificate:nth-child(3) {
     animation-delay: 0.4s;
 }
-
-
 
 /* Media Queries */
 @media (max-width: 768px) {
@@ -691,6 +632,7 @@ body {
 .social-links a:hover {
     color: var(--vsgreen);
 }
+
 
 @keyframes bounce {
 
@@ -748,21 +690,280 @@ body {
     }
 }
 
-/* Media Queries */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Base responsive adjustments */
 @media (max-width: 768px) {
-    #navbar {
+    #navbar ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.95);
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
         padding: 1rem;
+    }
+
+    #navbar ul.show {
+        display: flex;
+    }
+
+    #menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    #navbar {
+        padding: 0.5rem 1.5rem;
+    }
+
+    .welcome-content {
+        padding: 2rem;
+    }
+
+    .welcome-me img {
+        width: 200px;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0.5rem;
+    }
+
+    .project-tile {
+        margin-bottom: 1rem;
+    }
+
+    .project-info {
+        padding: 1rem;
+    }
+
+    .tech-stack span {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    /* Section Titles */
+    .section-title {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Certificates Section */
+    .certificates-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0.5rem;
+    }
+
+    .certificate img {
+        height: 200px;
+        /* Smaller height for mobile */
+    }
+
+    .certificate-info {
+        padding: 1rem;
+    }
+
+    /* Contact Section */
+    #contact {
+        padding: 3rem 1rem;
+    }
+
+    .social-links {
+        gap: 1.5rem;
+    }
+
+    .social-links a {
+        font-size: 1.5rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+        padding: 0 10px;
     }
 
     #navbar ul {
         display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.95);
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        padding: 1rem;
     }
 
-    .glitch {
-        font-size: 2.5rem;
+    #navbar ul.show {
+        display: flex;
+    }
+
+    #menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    #navbar {
+        padding: 0.5rem 1.2rem;
+    }
+
+    #navbar .nav-brand img {
+        height: 24px;
+    }
+
+    #welcome-section {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .welcome-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .welcome-me img {
+        width: 150px;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .welcome-text {
+        text-align: left;
+        padding: 1rem;
+    }
+
+    .welcome-text h3 {
+        font-size: 1rem;
+    }
+
+    .scroll-indicator {
+        position: static;
+        margin-top: 2rem;
+    }
+
+    #about {
+        padding: 0;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+    }
+
+    .about-text h3 {
+        margin: 0;
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 1.2rem;
+    }
+
+    .skill-bars {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    #projects {
+        padding: 2rem 1rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-tile {
+        margin: 1rem 0;
+    }
+
+    .project-image img {
+        height: auto;
+    }
+
+    .tech-stack span {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.4rem;
+    }
+
+    #certificates {
+        padding: 2cap 1rem;
+    }
+
+    .certificates-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    #contact {
+        padding: 3rem 1rem;
+    }
+
+    .social-links {
+        gap: 1rem;
+    }
+
+    .social-links a {
+        font-size: 1.5rem;
     }
 }
